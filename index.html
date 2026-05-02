@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mihidini & Chirath Wedding</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background:
+    linear-gradient(rgba(255, 246, 240, 0.88), rgba(255, 238, 230, 0.9)),
+    url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.card {
+  width: 100%;
+  max-width: 620px;
+  background: rgba(255,255,255,0.92);
+  border-radius: 28px;
+  padding: 38px 28px;
+  text-align: center;
+  box-shadow: 0 25px 70px rgba(0,0,0,0.16);
+  animation: fadeUp 1.2s ease forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.locked {
+  display: none;
+}
+
+.names {
+  font-family: 'Playfair Display', serif;
+  font-size: 46px;
+  color: #a75d68;
+  margin: 8px 0;
+}
+
+.subtitle {
+  color: #777;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.guest-name {
+  margin-top: 18px;
+  font-size: 20px;
+  color: #333;
+}
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 28px 0;
+}
+
+.time-box {
+  background: #f8e8e4;
+  border-radius: 16px;
+  padding: 14px 8px;
+}
+
+.time-box strong {
+  display: block;
+  font-size: 24px;
+  color: #a75d68;
+}
+
+.time-box span {
+  font-size: 12px;
+  color: #777;
+}
+
+.details {
+  margin-top: 18px;
+  line-height: 1.8;
+  color: #444;
+}
+
+.details strong {
+  color: #a75d68;
+}
+
+.actions {
+  margin-top: 24px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+button, a.button {
+  border: none;
+  background: #a75d68;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  transition: 0.25s;
+}
+
+button:hover, a.button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.seat-card {
+  margin-top: 26px;
+  background: #fff7f5;
+  border: 1px solid #f1d8d2;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.seat-card h3 {
+  margin-top: 0;
+  color: #a75d68;
+}
+
+#seatResult {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.private-box {
+  max-width: 460px;
+}
+
+input {
+  width: 100%;
+  padding: 13px;
+  margin-top: 12px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer {
+  margin-top: 26px;
+  color: #999;
+  font-size: 14px;
+}
+
+@media (max-width: 520px) {
+  .names {
+    font-size: 36px;
+  }
+
+  .countdown {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PRIVATE ACCESS / ERROR SCREEN -->
+<div class="card private-box" id="lockedScreen">
+  <div class="subtitle">Private Invitation</div>
+  <h1 class="names">Mihidini & Chirath</h1>
+  <p>This invitation is private.</p>
+  <p>Please open the personal invitation link sent to you.</p>
+</div>
+
+<!-- MAIN INVITATION -->
+<div class="card locked" id="inviteScreen">
+  <div class="subtitle">Wedding Invitation</div>
+
+  <h1 class="names">Mihidini & Chirath</h1>
+
+  <p class="guest-name" id="guestWelcome"></p>
+
+  <div class="countdown">
+    <div class="time-box">
+      <strong id="days">0</strong>
+      <span>Days</span>
+    </div>
+    <div class="time-box">
+      <strong id="hours">0</strong>
+      <span>Hours</span>
+    </div>
+    <div class="time-box">
+      <strong id="minutes">0</strong>
+      <span>Minutes</span>
+    </div>
+    <div class="time-box">
+      <strong id="seconds">0</strong>
+      <span>Seconds</span>
+    </div>
+  </div>
+
+  <div class="details">
+    <p><strong>Date:</strong> 11 March 2027</p>
+    <p><strong>Venue:</strong> Anantara Kalutara Resort</p>
+    <p><strong>Location:</strong> Kalutara, Sri Lanka</p>
+  </div>
+
+  <div class="actions">
+    <button onclick="openMap()">📍 View Location</button>
+    <button onclick="openRSVP()">💌 RSVP</button>
+  </div>
+
+  <div class="seat-card">
+    <h3>Your Seat</h3>
+    <p id="seatResult">Loading your table details...</p>
+  </div>
+
+  <div class="footer">
+    We can’t wait to celebrate with you ❤️
+  </div>
+</div>
+
+<script>
+/*
+GOOGLE SHEET SETUP
+
+Your Google Sheet should have columns exactly like this:
+
+Name | GuestID | AccessCode | Table | RSVPLink
+
+Example:
+
+Name: John Doe
+GuestID: john-doe
+AccessCode: AB123
+Table: Table 5
+RSVPLink: https://forms.gle/your-form-link
+
+Personal invite link:
+index.html?guest=john-doe&code=AB123
+*/
+
+// 1. Replace this with your Google Sheet opensheet URL
+const SHEET_URL = "https://docs.google.com/spreadsheets/d/14O4Q11BiVt2-7uwJCB6xm-Q05j7dXLUMe9Z0XSPQ0t8/edit?usp=sharing";
+
+// 2. Optional fallback RSVP form link
+const DEFAULT_RSVP_LINK = "https://docs.google.com/forms/d/e/1FAIpQLScuw4if0MKDYmJjnx-qW5uPSqvW8dd5jZdtgEmDwAPE25aO-A/viewform?usp=pp_url&entry.1278698980=Chirath+Jayamanna";
+
+// 3. Wedding date and time
+const WEDDING_DATE = new Date("2027-03-11T10:00:00").getTime();
+
+let currentGuest = null;
+
+// Get URL details
+const params = new URLSearchParams(window.location.search);
+const guestId = params.get("guest");
+const accessCode = params.get("code");
+
+const lockedScreen = document.getElementById("lockedScreen");
+const inviteScreen = document.getElementById("inviteScreen");
+
+function showInvite() {
+  lockedScreen.style.display = "none";
+  inviteScreen.classList.remove("locked");
+}
+
+function showLocked() {
+  lockedScreen.style.display = "block";
+  inviteScreen.classList.add("locked");
+}
+
+async function loadGuest() {
+  if (!guestId || !accessCode) {
+    showLocked();
+    return;
+  }
+
+  try {
+    const response = await fetch(SHEET_URL);
+    const guests = await response.json();
+
+    currentGuest = guests.find(g =>
+      String(g.GuestID).toLowerCase().trim() === guestId.toLowerCase().trim() &&
+      String(g.AccessCode).trim() === accessCode.trim()
+    );
+
+    if (!currentGuest) {
+      showLocked();
+      return;
+    }
+
+    document.getElementById("guestWelcome").innerHTML =
+      `Dear <strong>${currentGuest.Name}</strong>, you are warmly invited`;
+
+    document.getElementById("seatResult").innerHTML =
+      `🎉 ${currentGuest.Name}, your table is <strong>${currentGuest.Table}</strong>`;
+
+    showInvite();
+
+  } catch (error) {
+    document.getElementById("lockedScreen").innerHTML =
+      "<h2>Unable to load invitation</h2><p>Please check your internet connection or Sheet setup.</p>";
+    showLocked();
+  }
+}
+
+function updateCountdown() {
+  const now = new Date().getTime();
+  const diff = WEDDING_DATE - now;
+
+  if (diff <= 0) {
+    document.getElementById("days").innerText = "0";
+    document.getElementById("hours").innerText = "0";
+    document.getElementById("minutes").innerText = "0";
+    document.getElementById("seconds").innerText = "0";
+    return;
+  }
+
+  document.getElementById("days").innerText =
+    Math.floor(diff / (1000 * 60 * 60 * 24));
+
+  document.getElementById("hours").innerText =
+    Math.floor((diff / (1000 * 60 * 60)) % 24);
+
+  document.getElementById("minutes").innerText =
+    Math.floor((diff / (1000 * 60)) % 60);
+
+  document.getElementById("seconds").innerText =
+    Math.floor((diff / 1000) % 60);
+}
+
+function openMap() {
+  window.open(
+    "https://www.google.com/maps/search/?api=1&query=Anantara+Kalutara+Resort",
+    "_blank"
+  );
+}
+
+function openRSVP() {
+  if (!currentGuest) {
+    window.open(DEFAULT_RSVP_LINK, "_blank");
+    return;
+  }
+
+  const name = currentGuest.Name || "";
+
+  const url = DEFAULT_RSVP_LINK.replace(
+    "John+Doe",
+    encodeURIComponent(name)
+  );
+
+  window.open(url, "_blank");
+}
+
+loadGuest();
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
