@@ -5,178 +5,488 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Mihidini & Chirath Wedding</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
+:root {
+  --ink: #2b2622;
+  --muted: #766e67;
+  --paper: #fffaf4;
+  --surface: rgba(255, 252, 248, 0.94);
+  --line: rgba(60, 44, 36, 0.13);
+  --accent: #a8544c;
+  --accent-dark: #73352f;
+  --sage: #6f7f67;
+  --blush: #f2d8cf;
+  --gold: #bd9a5f;
+  --shadow: 0 28px 90px rgba(45, 36, 28, 0.18);
+  --hero-image: url("https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1800&q=82");
+  --cover-image: url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1300&q=82");
+}
+
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background:
-    linear-gradient(rgba(255, 246, 240, 0.88), rgba(255, 238, 230, 0.9)),
-    url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80");
-  background-size: cover;
-  background-position: center;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
+  color: var(--ink);
+  font-family: "Inter", sans-serif;
+  background:
+    linear-gradient(120deg, rgba(255, 250, 244, 0.96), rgba(252, 240, 233, 0.82)),
+    var(--hero-image);
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
 }
 
-.card {
-  width: 100%;
-  max-width: 620px;
-  background: rgba(255,255,255,0.92);
-  border-radius: 28px;
-  padding: 38px 28px;
-  text-align: center;
-  box-shadow: 0 25px 70px rgba(0,0,0,0.16);
-  animation: fadeUp 1.2s ease forwards;
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.72), transparent 34rem),
+    linear-gradient(90deg, rgba(255, 250, 244, 0.84), rgba(255, 250, 244, 0.38));
+  z-index: -1;
 }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(35px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+button,
+a {
+  font: inherit;
 }
 
 .locked {
-  display: none;
+  display: none !important;
+}
+
+.page {
+  width: min(1180px, calc(100% - 32px));
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 28px 0;
+  display: grid;
+  align-items: center;
+}
+
+.invite {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+}
+
+.hero {
+  min-height: calc(100vh - 56px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.92fr);
+}
+
+.hero-copy {
+  padding: clamp(28px, 5vw, 64px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 44px;
+}
+
+.eyebrow {
+  width: fit-content;
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--accent-dark);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.55);
 }
 
 .names {
-  font-family: 'Playfair Display', serif;
-  font-size: 46px;
-  color: #a75d68;
-  margin: 8px 0;
+  margin: 22px 0 14px;
+  color: var(--accent-dark);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(3rem, 8vw, 6.7rem);
+  line-height: 0.95;
 }
 
-.subtitle {
-  color: #777;
-  letter-spacing: 2px;
+.amp {
+  display: block;
+  color: var(--gold);
+  font-size: 0.54em;
+  line-height: 0.9;
+}
+
+.intro {
+  max-width: 620px;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 2vw, 1.16rem);
+  line-height: 1.8;
+}
+
+.intro strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.quick-details {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-block: 1px solid var(--line);
+}
+
+.quick-details div {
+  min-width: 0;
+  padding: 18px 20px;
+  border-right: 1px solid var(--line);
+}
+
+.quick-details div:last-child {
+  border-right: 0;
+}
+
+.quick-details span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-size: 13px;
 }
 
-.guest-name {
-  margin-top: 18px;
-  font-size: 20px;
-  color: #333;
+.quick-details strong {
+  display: block;
+  color: var(--ink);
+  font-size: clamp(0.95rem, 1.6vw, 1.06rem);
+  line-height: 1.4;
 }
 
 .countdown {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin: 28px 0;
+  gap: 12px;
 }
 
 .time-box {
-  background: #f8e8e4;
+  min-height: 88px;
+  padding: 14px 10px;
+  border: 1px solid var(--line);
   border-radius: 16px;
-  padding: 14px 8px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.5);
+  text-align: center;
 }
 
 .time-box strong {
   display: block;
-  font-size: 24px;
-  color: #a75d68;
+  color: var(--accent);
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  line-height: 1;
 }
 
 .time-box span {
-  font-size: 12px;
-  color: #777;
-}
-
-.details {
-  margin-top: 18px;
-  line-height: 1.8;
-  color: #444;
-}
-
-.details strong {
-  color: #a75d68;
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .actions {
-  margin-top: 24px;
   display: flex;
-  gap: 12px;
-  justify-content: center;
   flex-wrap: wrap;
+  gap: 12px;
 }
 
-button, a.button {
-  border: none;
-  background: #a75d68;
-  color: white;
-  padding: 12px 18px;
+.button {
+  min-height: 48px;
+  padding: 0 18px;
+  border: 1px solid transparent;
   border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  color: #fff;
+  background: var(--accent);
   cursor: pointer;
   text-decoration: none;
-  font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-  transition: 0.25s;
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
 }
 
-button:hover, a.button:hover {
+.button svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+}
+
+.button.secondary {
+  color: var(--accent-dark);
+  border-color: var(--line);
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.button:hover {
   transform: translateY(-2px);
-  opacity: 0.9;
+  background: var(--accent-dark);
 }
 
-.seat-card {
-  margin-top: 26px;
-  background: #fff7f5;
-  border: 1px solid #f1d8d2;
-  padding: 20px;
+.button.secondary:hover {
+  border-color: rgba(168, 84, 76, 0.4);
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.hero-photo {
+  min-height: 100%;
+  position: relative;
+  isolation: isolate;
+  background:
+    linear-gradient(180deg, transparent, rgba(33, 23, 18, 0.48)),
+    var(--cover-image);
+  background-position: center;
+  background-size: cover;
+}
+
+.hero-photo::after {
+  content: "";
+  position: absolute;
+  inset: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
   border-radius: 20px;
+  pointer-events: none;
 }
 
-.seat-card h3 {
-  margin-top: 0;
-  color: #a75d68;
+.photo-caption {
+  position: absolute;
+  right: 28px;
+  bottom: 28px;
+  left: 28px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 18px;
+  color: #fff;
+  background: rgba(31, 23, 18, 0.45);
+  backdrop-filter: blur(12px);
 }
 
-#seatResult {
-  font-size: 18px;
-  font-weight: 500;
+.photo-caption span {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.photo-caption p {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.55rem, 3vw, 2.35rem);
+  line-height: 1.12;
+}
+
+.section {
+  padding: clamp(28px, 5vw, 56px);
+  border-top: 1px solid var(--line);
+}
+
+.section-title {
+  max-width: 700px;
+  margin: 0 0 24px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.05;
+  color: var(--accent-dark);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(280px, 1fr);
+  gap: 18px;
+}
+
+.seat-card,
+.note-card {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.seat-card h2,
+.note-card h2 {
+  margin: 0 0 8px;
+  color: var(--accent-dark);
+  font-family: "Playfair Display", serif;
+  font-size: 1.75rem;
+}
+
+.seat-card p,
+.note-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.seat-card strong {
+  color: var(--ink);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 14px;
+}
+
+.gallery.one,
+.gallery.two {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.gallery img {
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  object-fit: cover;
+  display: block;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: var(--blush);
+}
+
+.gallery-stack {
+  display: grid;
+  gap: 14px;
 }
 
 .private-box {
-  max-width: 460px;
+  width: min(560px, calc(100% - 32px));
+  margin: 12vh auto;
+  padding: clamp(28px, 5vw, 52px);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  text-align: center;
 }
 
-input {
-  width: 100%;
-  padding: 13px;
-  margin-top: 12px;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  font-family: 'Poppins', sans-serif;
+.private-box .names {
+  font-size: clamp(3rem, 9vw, 5rem);
+}
+
+.private-box p {
+  margin: 10px auto 0;
+  max-width: 390px;
+  color: var(--muted);
+  line-height: 1.7;
 }
 
 .footer {
-  margin-top: 26px;
-  color: #999;
-  font-size: 14px;
+  padding: 24px clamp(28px, 5vw, 56px);
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
-@media (max-width: 520px) {
-  .names {
-    font-size: 36px;
+.footer strong {
+  color: var(--accent-dark);
+}
+
+@media (max-width: 860px) {
+  body {
+    background-attachment: scroll;
   }
 
+  .page {
+    width: min(100% - 20px, 680px);
+    padding: 10px 0;
+  }
+
+  .invite {
+    border-radius: 20px;
+  }
+
+  .hero,
+  .info-grid,
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: 0;
+  }
+
+  .hero-copy {
+    gap: 30px;
+  }
+
+  .hero-photo {
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 560px) {
+  .page {
+    width: 100%;
+    padding: 0;
+  }
+
+  .invite {
+    min-height: 100vh;
+    border-width: 0;
+    border-radius: 0;
+  }
+
+  .hero-copy,
+  .section {
+    padding: 26px 18px;
+  }
+
+  .quick-details,
   .countdown {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .quick-details div:nth-child(2) {
+    border-right: 0;
+  }
+
+  .quick-details div:last-child {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--line);
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .hero-photo {
+    min-height: 360px;
+  }
+
+  .photo-caption {
+    right: 18px;
+    bottom: 18px;
+    left: 18px;
   }
 }
 </style>
@@ -184,194 +494,345 @@ input {
 
 <body>
 
-<!-- PRIVATE ACCESS / ERROR SCREEN -->
-<div class="card private-box" id="lockedScreen">
-  <div class="subtitle">Private Invitation</div>
-  <h1 class="names">Mihidini & Chirath</h1>
-  <p>This invitation is private.</p>
-  <p>Please open the personal invitation link sent to you.</p>
+<div class="private-box" id="lockedScreen">
+  <p class="eyebrow">Private Invitation</p>
+  <h1 class="names"><span id="lockedNameOne">Mihidini</span><span class="amp">&amp;</span><span id="lockedNameTwo">Chirath</span></h1>
+  <p id="lockedMessage">Please open the personal invitation link sent to you.</p>
 </div>
 
-<!-- MAIN INVITATION -->
-<div class="card locked" id="inviteScreen">
-  <div class="subtitle">Wedding Invitation</div>
+<main class="page locked" id="inviteScreen">
+  <article class="invite">
+    <section class="hero">
+      <div class="hero-copy">
+        <div>
+          <p class="eyebrow" id="eventLabel">Wedding Invitation</p>
+          <h1 class="names"><span id="nameOne">Mihidini</span><span class="amp">&amp;</span><span id="nameTwo">Chirath</span></h1>
+          <p class="intro" id="guestWelcome"></p>
+        </div>
 
-  <h1 class="names">Mihidini & Chirath</h1>
+        <div class="quick-details" aria-label="Wedding details">
+          <div>
+            <span>Date</span>
+            <strong id="weddingDateText"></strong>
+          </div>
+          <div>
+            <span>Venue</span>
+            <strong id="venueText"></strong>
+          </div>
+          <div>
+            <span>Location</span>
+            <strong id="locationText"></strong>
+          </div>
+        </div>
 
-  <p class="guest-name" id="guestWelcome"></p>
+        <div class="countdown" aria-label="Countdown to the wedding">
+          <div class="time-box">
+            <strong id="days">0</strong>
+            <span>Days</span>
+          </div>
+          <div class="time-box">
+            <strong id="hours">0</strong>
+            <span>Hours</span>
+          </div>
+          <div class="time-box">
+            <strong id="minutes">0</strong>
+            <span>Minutes</span>
+          </div>
+          <div class="time-box">
+            <strong id="seconds">0</strong>
+            <span>Seconds</span>
+          </div>
+        </div>
 
-  <div class="countdown">
-    <div class="time-box">
-      <strong id="days">0</strong>
-      <span>Days</span>
-    </div>
-    <div class="time-box">
-      <strong id="hours">0</strong>
-      <span>Hours</span>
-    </div>
-    <div class="time-box">
-      <strong id="minutes">0</strong>
-      <span>Minutes</span>
-    </div>
-    <div class="time-box">
-      <strong id="seconds">0</strong>
-      <span>Seconds</span>
-    </div>
-  </div>
+        <div class="actions">
+          <button class="button" type="button" onclick="openMap()" aria-label="Open wedding location in Google Maps">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+              <path d="M12 21s7-5.1 7-11a7 7 0 1 0-14 0c0 5.9 7 11 7 11Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            View Location
+          </button>
+          <button class="button secondary" type="button" onclick="openRSVP()" aria-label="Open RSVP form">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+              <path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+            RSVP
+          </button>
+        </div>
+      </div>
 
-  <div class="details">
-    <p><strong>Date:</strong> 11 March 2027</p>
-    <p><strong>Venue:</strong> Anantara Kalutara Resort</p>
-    <p><strong>Location:</strong> Kalutara, Sri Lanka</p>
-  </div>
+      <div class="hero-photo" role="img" aria-label="Wedding cover photo">
+        <div class="photo-caption">
+          <span id="captionLabel"></span>
+          <p id="captionText"></p>
+        </div>
+      </div>
+    </section>
 
-  <div class="actions">
-    <button onclick="openMap()">📍 View Location</button>
-    <button onclick="openRSVP()">💌 RSVP</button>
-  </div>
+    <section class="section">
+      <h2 class="section-title">A little detail for your day with us</h2>
+      <div class="info-grid">
+        <div class="seat-card">
+          <h2>Your Seat</h2>
+          <p id="seatResult">Loading your table details...</p>
+        </div>
+        <div class="note-card">
+          <h2 id="noteTitle"></h2>
+          <p id="noteText"></p>
+        </div>
+      </div>
+    </section>
 
-  <div class="seat-card">
-    <h3>Your Seat</h3>
-    <p id="seatResult">Loading your table details...</p>
-  </div>
+    <section class="section" id="photoSection">
+      <h2 class="section-title">Moments we love</h2>
+      <div class="gallery" id="photoGallery"></div>
+    </section>
 
-  <div class="footer">
-    We can’t wait to celebrate with you ❤️
-  </div>
-</div>
+    <footer class="footer">
+      <span id="footerText"></span>
+      <strong id="footerNames"></strong>
+    </footer>
+  </article>
+</main>
 
 <script>
 /*
-GOOGLE SHEET SETUP
-
-Your Google Sheet should have columns exactly like this:
-
-Name | GuestID | AccessCode | Table | RSVPLink
-
-Example:
-
-Name: John Doe
-GuestID: john-doe
-AccessCode: AB123
-Table: Table 5
-RSVPLink: https://forms.gle/your-form-link
-
-Personal invite link:
-index.html?guest=john-doe&code=AB123
+  CUSTOMIZE HERE
+  - Add your own photos to assets/photos/
+  - Replace image URLs below with paths like "assets/photos/cover.jpg"
+  - Keep your Google Sheet columns as: Name | GuestID | AccessCode | Table | RSVPLink
+  - Personal link format: index.html?guest=john-doe&code=AB123
+  - Preview link format: index.html?preview=true
 */
-
-// 1. Replace this with your Google Sheet opensheet URL
-const SHEET_URL = "https://opensheet.elk.sh/14O4Q11BiVt2-7uwJCB6xm-Q05j7dXLUMe9Z0XSPQ0t8/Sheet1";
-
-// 2. Optional fallback RSVP form link
-const DEFAULT_RSVP_LINK = "https://docs.google.com/forms/d/e/1FAIpQLScuw4if0MKDYmJjnx-qW5uPSqvW8dd5jZdtgEmDwAPE25aO-A/viewform?usp=pp_url&entry.1278698980=Chirath+Jayamanna";
-
-// 3. Wedding date and time
-const WEDDING_DATE = new Date("2027-03-11T10:00:00").getTime();
+const SITE = {
+  couple: {
+    firstName: "Mihidini",
+    secondName: "Chirath",
+    fullText: "Mihidini & Chirath"
+  },
+  eventLabel: "Wedding Invitation",
+  weddingDateText: "11 March 2027",
+  weddingDateTime: "2027-03-11T10:00:00+05:30",
+  venue: "Ananthara Kalutara Banquet Hall",
+  location: "Kalutara, Sri Lanka",
+  mapQuery: "Ananthara Kalutara Banquet Hall, Kalutara, Sri Lanka",
+  lockedMessage: "Please open the personal invitation link sent to you.",
+  inviteLine: "Dear {guest}, we would love to celebrate our wedding day with you.",
+  fallbackGuestName: "Guest",
+  captionLabel: "11 March 2027",
+  captionText: "Together with the people we love most",
+  noteTitle: "With love",
+  noteText: "Your presence means so much to us. Please RSVP when you can so we can prepare your place with care.",
+  footerText: "We cannot wait to celebrate with you.",
+  sheetUrl: "https://opensheet.elk.sh/14O4Q11BiVt2-7uwJCB6xm-Q05j7dXLUMe9Z0XSPQ0t8/Sheet1",
+  defaultRsvpLink: "https://docs.google.com/forms/d/e/1FAIpQLScuw4if0MKDYmJjnx-qW5uPSqvW8dd5jZdtgEmDwAPE25aO-A/viewform?usp=pp_url&entry.1278698980=Chirath+Jayamanna",
+  rsvpNameField: "entry.1278698980",
+  colors: {
+    accent: "#a8544c",
+    accentDark: "#73352f",
+    sage: "#6f7f67",
+    gold: "#bd9a5f"
+  },
+  photos: {
+    background: "https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1800&q=82",
+    cover: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1300&q=82",
+    gallery: [
+      "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=82",
+      "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=82",
+      "https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?auto=format&fit=crop&w=900&q=82"
+    ]
+  },
+  previewGuest: {
+    Name: "A Special Guest",
+    Table: "Table 5"
+  }
+};
 
 let currentGuest = null;
+let weddingTimestamp = new Date(SITE.weddingDateTime).getTime();
 
-// Get URL details
 const params = new URLSearchParams(window.location.search);
 const guestId = params.get("guest");
 const accessCode = params.get("code");
+const isPreview = params.get("preview") === "true";
 
 const lockedScreen = document.getElementById("lockedScreen");
 const inviteScreen = document.getElementById("inviteScreen");
+
+function setText(id, value) {
+  document.getElementById(id).textContent = value;
+}
+
+function setCssVariable(name, value) {
+  document.documentElement.style.setProperty(name, value);
+}
+
+function applySiteSettings() {
+  setCssVariable("--accent", SITE.colors.accent);
+  setCssVariable("--accent-dark", SITE.colors.accentDark);
+  setCssVariable("--sage", SITE.colors.sage);
+  setCssVariable("--gold", SITE.colors.gold);
+  setCssVariable("--hero-image", `url("${SITE.photos.background}")`);
+  setCssVariable("--cover-image", `url("${SITE.photos.cover}")`);
+
+  document.title = `${SITE.couple.fullText} Wedding`;
+  setText("lockedNameOne", SITE.couple.firstName);
+  setText("lockedNameTwo", SITE.couple.secondName);
+  setText("lockedMessage", SITE.lockedMessage);
+  setText("nameOne", SITE.couple.firstName);
+  setText("nameTwo", SITE.couple.secondName);
+  setText("eventLabel", SITE.eventLabel);
+  setText("weddingDateText", SITE.weddingDateText);
+  setText("venueText", SITE.venue);
+  setText("locationText", SITE.location);
+  setText("captionLabel", SITE.captionLabel);
+  setText("captionText", SITE.captionText);
+  setText("noteTitle", SITE.noteTitle);
+  setText("noteText", SITE.noteText);
+  setText("footerText", SITE.footerText);
+  setText("footerNames", SITE.couple.fullText);
+  renderGallery();
+}
+
+function renderGallery() {
+  const gallery = document.getElementById("photoGallery");
+  const section = document.getElementById("photoSection");
+  gallery.innerHTML = "";
+
+  if (!SITE.photos.gallery.length) {
+    section.classList.add("locked");
+    return;
+  }
+
+  section.classList.remove("locked");
+  gallery.className = `gallery ${SITE.photos.gallery.length === 1 ? "one" : ""}${SITE.photos.gallery.length === 2 ? "two" : ""}`.trim();
+  SITE.photos.gallery.slice(0, 3).forEach((src, index) => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = `${SITE.couple.fullText} wedding photo ${index + 1}`;
+    img.loading = "lazy";
+
+    if (index === 0) {
+      gallery.appendChild(img);
+      return;
+    }
+
+    let stack = gallery.querySelector(".gallery-stack");
+    if (!stack) {
+      stack = document.createElement("div");
+      stack.className = "gallery-stack";
+      gallery.appendChild(stack);
+    }
+    stack.appendChild(img);
+  });
+}
 
 function showInvite() {
   lockedScreen.style.display = "none";
   inviteScreen.classList.remove("locked");
 }
 
-function showLocked() {
+function showLocked(message = SITE.lockedMessage) {
+  setText("lockedMessage", message);
   lockedScreen.style.display = "block";
   inviteScreen.classList.add("locked");
 }
 
+function inviteTextFor(name) {
+  return SITE.inviteLine.replace("{guest}", name);
+}
+
+function renderGuest(guest) {
+  currentGuest = guest;
+  const guestName = guest.Name || SITE.fallbackGuestName;
+  setText("guestWelcome", inviteTextFor(guestName));
+  document.getElementById("seatResult").innerHTML =
+    `${escapeHtml(guestName)}, your table is <strong>${escapeHtml(guest.Table || "being prepared")}</strong>.`;
+  showInvite();
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
 async function loadGuest() {
+  if (isPreview) {
+    renderGuest(SITE.previewGuest);
+    return;
+  }
+
   if (!guestId || !accessCode) {
     showLocked();
     return;
   }
 
   try {
-    const response = await fetch(SHEET_URL);
-    const guests = await response.json();
+    const response = await fetch(SITE.sheetUrl);
 
-    currentGuest = guests.find(g =>
-      String(g.GuestID).toLowerCase().trim() === guestId.toLowerCase().trim() &&
-      String(g.AccessCode).trim() === accessCode.trim()
+    if (!response.ok) {
+      throw new Error("Guest sheet unavailable");
+    }
+
+    const guests = await response.json();
+    const match = guests.find((guest) =>
+      String(guest.GuestID || "").toLowerCase().trim() === guestId.toLowerCase().trim() &&
+      String(guest.AccessCode || "").trim() === accessCode.trim()
     );
 
-    if (!currentGuest) {
-      showLocked();
+    if (!match) {
+      showLocked("We could not match this invitation link. Please check the link and try again.");
       return;
     }
 
-    document.getElementById("guestWelcome").innerHTML =
-      `Dear <strong>${currentGuest.Name}</strong>, you are warmly invited`;
-
-    document.getElementById("seatResult").innerHTML =
-      `🎉 ${currentGuest.Name}, your table is <strong>${currentGuest.Table}</strong>`;
-
-    showInvite();
-
+    renderGuest(match);
   } catch (error) {
-    document.getElementById("lockedScreen").innerHTML =
-      "<h2>Unable to load invitation</h2><p>Please check your internet connection or Sheet setup.</p>";
-    showLocked();
+    showLocked("Unable to load the invitation right now. Please check the internet connection or Google Sheet setup.");
   }
 }
 
 function updateCountdown() {
-  const now = new Date().getTime();
-  const diff = WEDDING_DATE - now;
+  const now = Date.now();
+  const diff = weddingTimestamp - now;
+  const remaining = Math.max(diff, 0);
 
-  if (diff <= 0) {
-    document.getElementById("days").innerText = "0";
-    document.getElementById("hours").innerText = "0";
-    document.getElementById("minutes").innerText = "0";
-    document.getElementById("seconds").innerText = "0";
-    return;
-  }
-
-  document.getElementById("days").innerText =
-    Math.floor(diff / (1000 * 60 * 60 * 24));
-
-  document.getElementById("hours").innerText =
-    Math.floor((diff / (1000 * 60 * 60)) % 24);
-
-  document.getElementById("minutes").innerText =
-    Math.floor((diff / (1000 * 60)) % 60);
-
-  document.getElementById("seconds").innerText =
-    Math.floor((diff / 1000) % 60);
+  setText("days", Math.floor(remaining / (1000 * 60 * 60 * 24)));
+  setText("hours", Math.floor((remaining / (1000 * 60 * 60)) % 24));
+  setText("minutes", Math.floor((remaining / (1000 * 60)) % 60));
+  setText("seconds", Math.floor((remaining / 1000) % 60));
 }
 
 function openMap() {
-  window.open(
-    "https://www.google.com/maps/search/?api=1&query=Anantara+Kalutara+Resort",
-    "_blank"
-  );
+  const mapUrl = new URL("https://www.google.com/maps/search/");
+  mapUrl.searchParams.set("api", "1");
+  mapUrl.searchParams.set("query", SITE.mapQuery);
+  window.open(mapUrl.toString(), "_blank", "noopener");
 }
 
 function openRSVP() {
-  if (!currentGuest) {
-    window.open(DEFAULT_RSVP_LINK, "_blank");
+  const guestLink = currentGuest && currentGuest.RSVPLink;
+
+  if (guestLink) {
+    window.open(guestLink, "_blank", "noopener");
     return;
   }
 
-  const name = currentGuest.Name || "";
+  const url = new URL(SITE.defaultRsvpLink);
+  const guestName = currentGuest ? currentGuest.Name : SITE.fallbackGuestName;
 
-  const url = DEFAULT_RSVP_LINK.replace(
-    "John+Doe",
-    encodeURIComponent(name)
-  );
+  if (SITE.rsvpNameField) {
+    url.searchParams.set(SITE.rsvpNameField, guestName);
+  }
 
-  window.open(url, "_blank");
+  window.open(url.toString(), "_blank", "noopener");
 }
 
+applySiteSettings();
 loadGuest();
 updateCountdown();
 setInterval(updateCountdown, 1000);
